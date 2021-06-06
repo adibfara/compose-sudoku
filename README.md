@@ -1,6 +1,12 @@
 # Compose Sudoku
 
-Famous puzzle "Sudoku" created with Jetpack Compose.
+Famous puzzle "Sudoku" created with Jetpack Compose for educational purposes.
+
+The features include:
+
+* Selection
+* Control box with 3 mods for number input
+* Center and Corner pencil marks
 
 ## Demo
 
