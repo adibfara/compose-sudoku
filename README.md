@@ -4,9 +4,7 @@ Famous puzzle "Sudoku" created with Jetpack Compose.
 
 ## Demo
 
-[![Demo](https://github.com/adibfara/compose-sudoku/blob/main/preview/Preview_1.PNG)](https://github.com/adibfara/compose-sudoku/blob/main/preview/Preview_1.PNG)
-
-[![Demo](https://github.com/adibfara/compose-sudoku/blob/main/preview/preview.mp4?raw=true)](https://github.com/adibfara/compose-sudoku/blob/main/preview/preview.mp4?raw=true)
+[![Demo](https://github.com/adibfara/compose-sudoku/blob/main/preview/preview.gif)](https://github.com/adibfara/compose-sudoku/blob/main/preview/preview.gif)
 
 ## Contributing
 
