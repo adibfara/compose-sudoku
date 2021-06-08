@@ -95,7 +95,7 @@ class SudokuViewModelTest {
     }
 
     @Test
-    fun `clear deselects everything`() {
+    fun `clear() deselects everything`() {
         with(createViewModel()) {
             clicked(sudokuCellData)
             clicked(sudokuCellData1)
