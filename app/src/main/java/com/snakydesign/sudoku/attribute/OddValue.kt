@@ -10,11 +10,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
-import com.snakydesign.sudoku.SudokuCell
+import com.snakydesign.sudoku.SudokuCellData
 
-object OddValue : SudokuCell.Attribute {
+object OddValue : SudokuCellData.Attribute {
     @Composable
-    override fun Element() {
+    override fun Draw() {
         Box(Modifier
             .fillMaxSize()
             .padding(3.dp)
@@ -24,5 +24,5 @@ object OddValue : SudokuCell.Attribute {
     }
 }
 
-fun SudokuCell.setOdd(): SudokuCell = copy(attributes = attributes + OddValue)
-fun SudokuCell.unsetOdd(): SudokuCell = copy(attributes = attributes - OddValue)
+fun SudokuCellData.setOdd(): SudokuCellData = copy(attributes = attributes + OddValue)
+fun SudokuCellData.unsetOdd(): SudokuCellData = copy(attributes = attributes - OddValue)

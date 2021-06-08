@@ -14,23 +14,24 @@ class SudokuViewModel(private val sudokuTable: SudokuTable) {
     private val _numberInputType = MutableStateFlow<NumberInputType>(NumberInputType.Actual)
     fun table(): StateFlow<SudokuTable> = _table
     fun numberInputType(): StateFlow<NumberInputType> = _numberInputType
+
     private fun updateCell(
-        sudokuCell: SudokuCell,
-        newSudokuCell: SudokuCell,
+        sudokuCellData: SudokuCellData,
+        newSudokuCellData: SudokuCellData,
     ) {
         val state = _table.value
         val newState =
-            state.copy(sudokuCell.row, sudokuCell.column, newSudokuCell)
+            state.copy(sudokuCellData.row, sudokuCellData.column, newSudokuCellData)
         _table.value = newState
     }
 
-    fun clicked(sudokuCell: SudokuCell) {
-        val newSudokuCell = if (sudokuCell.isSelected) {
-            sudokuCell.deselect()
+    fun clicked(sudokuCellData: SudokuCellData) {
+        val newSudokuCell = if (sudokuCellData.isSelected) {
+            sudokuCellData.deselect()
         } else {
-            sudokuCell.select()
+            sudokuCellData.select()
         }
-        updateCell(sudokuCell, newSudokuCell)
+        updateCell(sudokuCellData, newSudokuCell)
     }
 
     fun onNumberPressed(number: Int) {

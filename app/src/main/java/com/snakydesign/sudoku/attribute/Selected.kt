@@ -6,11 +6,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.snakydesign.sudoku.SudokuCell
+import com.snakydesign.sudoku.SudokuCellData
 
-object Selected : SudokuCell.Attribute {
+object Selected : SudokuCellData.Attribute {
     @Composable
-    override fun Element() {
+    override fun Draw() {
         Box(Modifier
             .fillMaxSize()
             .background(MaterialTheme.colors.onSurface.copy(alpha = 0.2f))) {
@@ -18,6 +18,6 @@ object Selected : SudokuCell.Attribute {
     }
 }
 
-val SudokuCell.isSelected: Boolean get() = attributes.contains(Selected)
-fun SudokuCell.select(): SudokuCell = copy(attributes = attributes + Selected)
-fun SudokuCell.deselect(): SudokuCell = copy(attributes = attributes - Selected)
+val SudokuCellData.isSelected: Boolean get() = attributes.contains(Selected)
+fun SudokuCellData.select(): SudokuCellData = copy(attributes = attributes + Selected)
+fun SudokuCellData.deselect(): SudokuCellData = copy(attributes = attributes - Selected)

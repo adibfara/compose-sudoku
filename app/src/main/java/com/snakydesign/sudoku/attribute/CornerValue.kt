@@ -10,12 +10,12 @@ import androidx.compose.ui.unit.ExperimentalUnitApi
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
-import com.snakydesign.sudoku.SudokuCell
+import com.snakydesign.sudoku.SudokuCellData
 
-data class CornerValue(val values: Set<Int>) : SudokuCell.Attribute {
+data class CornerValue(val values: Set<Int>) : SudokuCellData.Attribute {
     @OptIn(ExperimentalUnitApi::class)
     @Composable
-    override fun Element() {
+    override fun Draw() {
         Box {
             Text(
                 values.sorted().joinToString(""),
@@ -28,7 +28,7 @@ data class CornerValue(val values: Set<Int>) : SudokuCell.Attribute {
     }
 }
 
-fun SudokuCell.toggleCornerValue(value: Int): SudokuCell {
+fun SudokuCellData.toggleCornerValue(value: Int): SudokuCellData {
     val currentValues =
         attributes.filterIsInstance<CornerValue>().firstOrNull()?.values.orEmpty().let {
             if (it.contains(value)) {
@@ -42,6 +42,6 @@ fun SudokuCell.toggleCornerValue(value: Int): SudokuCell {
     }
 }
 
-fun SudokuCell.removeCornerValues(): SudokuCell {
+fun SudokuCellData.removeCornerValues(): SudokuCellData {
     return copy(attributes = attributes.filterNot { it is CornerValue }.toSet())
 }

@@ -4,16 +4,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.compositionLocalOf
 
 data class SudokuTable(
-    val values: List<SudokuCell>,
+    val values: List<SudokuCellData>,
 ) {
 
-    fun get(row: Int, column: Int): SudokuCell {
+    fun get(row: Int, column: Int): SudokuCellData {
         return values[(row * 9) + column]
     }
 
-    fun copy(row: Int, column: Int, sudokuCell: SudokuCell): SudokuTable {
+    fun copy(row: Int, column: Int, sudokuCellData: SudokuCellData): SudokuTable {
         return values.toMutableList().apply {
-            set((row * 9) + column, sudokuCell)
+            set((row * 9) + column, sudokuCellData)
         }.let {
             SudokuTable(it)
         }
@@ -28,7 +28,7 @@ data class SudokuTable(
                         val number = values.firstOrNull {
                             it.first.first == row + 1 && it.first.second == column + 1
                         }?.second
-                        add(SudokuCell(
+                        add(SudokuCellData(
                             number,
                             row,
                             column
@@ -40,7 +40,7 @@ data class SudokuTable(
     }
 }
 
-data class SudokuCell(
+data class SudokuCellData(
     val number: Int?,
     val row: Int,
     val column: Int,
@@ -48,7 +48,7 @@ data class SudokuCell(
 ) {
     interface Attribute {
         @Composable
-        fun Element()
+        fun Draw()
     }
 }
 

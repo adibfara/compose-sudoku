@@ -10,12 +10,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.ExperimentalUnitApi
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
-import com.snakydesign.sudoku.SudokuCell
+import com.snakydesign.sudoku.SudokuCellData
 
-data class CenterValue(val values: Set<Int>) : SudokuCell.Attribute {
+data class CenterValue(val values: Set<Int>) : SudokuCellData.Attribute {
     @OptIn(ExperimentalUnitApi::class)
     @Composable
-    override fun Element() {
+    override fun Draw() {
         Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
             Text(
                 values.sorted().joinToString(""),
@@ -28,7 +28,7 @@ data class CenterValue(val values: Set<Int>) : SudokuCell.Attribute {
     }
 }
 
-fun SudokuCell.toggleCenterValue(value: Int): SudokuCell {
+fun SudokuCellData.toggleCenterValue(value: Int): SudokuCellData {
     val currentValues =
         attributes.filterIsInstance<CenterValue>().firstOrNull()?.values.orEmpty().let {
             if (it.contains(value)) {
@@ -42,6 +42,6 @@ fun SudokuCell.toggleCenterValue(value: Int): SudokuCell {
     }
 }
 
-fun SudokuCell.removeCenterValues(): SudokuCell {
+fun SudokuCellData.removeCenterValues(): SudokuCellData {
     return copy(attributes = attributes.filterNot { it is CenterValue }.toSet())
 }

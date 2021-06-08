@@ -17,21 +17,21 @@ import androidx.compose.ui.unit.dp
 import com.snakydesign.sudoku.attribute.isSelected
 
 @Composable
-fun SudokuCell(sudokuCell: SudokuCell) {
+fun SudokuCell(sudokuCellData: SudokuCellData) {
     val viewModel = LocalSudokuViewModel.current
     val color =
-        animateColorAsState(targetValue = if (sudokuCell.isSelected) MaterialTheme.colors.primaryVariant.copy(
+        animateColorAsState(targetValue = if (sudokuCellData.isSelected) MaterialTheme.colors.primaryVariant.copy(
             alpha = 0.2f) else Color.Unspecified)
     Box(Modifier
         .fillMaxSize()
         .border(1.dp, Color.Gray)
         .background(color.value)
-        .clickable { viewModel.clicked(sudokuCell) }
+        .clickable { viewModel.clicked(sudokuCellData) }
 
     ) {
-        val actualText = sudokuCell.number?.toString() ?: ""
-        sudokuCell.attributes.forEach {
-            it.Element()
+        val actualText = sudokuCellData.number?.toString() ?: ""
+        sudokuCellData.attributes.forEach {
+            it.Draw()
         }
         Text(
             actualText,
