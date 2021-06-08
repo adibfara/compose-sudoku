@@ -26,7 +26,8 @@ class SudokuViewModel(private val sudokuTable: SudokuTable) {
     }
 
     fun clicked(sudokuCellData: SudokuCellData) {
-        val newSudokuCell = if (sudokuCellData.isSelected) {
+        val foundCell = _table.value.get(sudokuCellData.row, sudokuCellData.column)
+        val newSudokuCell = if (foundCell.isSelected) {
             sudokuCellData.deselect()
         } else {
             sudokuCellData.select()
