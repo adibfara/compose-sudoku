@@ -45,7 +45,7 @@ fun SudokuView() {
                 .weight(2.5f)
                 .align(CenterHorizontally))
             SudokuControls(
-                viewModel.numberInputType().value,
+                viewModel.numberInputType().collectAsState().value,
                 Modifier
                     .weight(1f)
                     .align(CenterHorizontally),
